@@ -1,22 +1,47 @@
-<h1>Listado de productos</h1>
 
-<table>
-    <tr>
-    <%= @productos.each do |product|%>
-        <th>Name</th>
-        <th>Desc</th>
-        <th>Price</th>
-        
-    </tr>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CrudRails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-    <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td>
-            <%= link_to "Ver" %>
-            <%= link_to "Editar" %>
-            <%= link_to "Eliminar" %>
-        </td>
-    </tr>
-</table>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <h1>Listado de productos</h1>
+
+        <table class="table">
+
+        <%# SENTENCIA PARA LLAMARA LOS PRODUCTOS %>
+        <% @products.each do |product| %>
+        <%# SENTENCIA PARA LLAMARA LOS PRODUCTOS %>
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+                <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.description %></td>
+                        <td><%= product.price %></td>
+                        <td><%= link_to "Ver" %> <%= link_to "Editar" %> <%= link_to "Eliminar" %></td>
+                    </tr>
+                <tr>
+        <% end %>
+            </table>
+
+  </body>
+</html>
+
+
+
+
